@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from './services/api.service';
 import { Employee } from './model/employee';
 import { Emp } from './model/emp';
+import { Emp2 } from './model/emp2';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -13,6 +14,22 @@ export class AppComponent {
  // employees: Employee;
  // employee = new Employee();
   employees: Employee[];
+  employee = new Emp2();
+  em: Emp2[];
+
+  test = this.employee.name;
+
+
+  emp2 = {
+    name: 'janzz',
+    address: 'hoagama',
+    salary: '2545625',
+    nic: '942260865v',
+    email: 'janz@gmail',
+    password: '124'
+  };
+
+  savedemp2: any;
  // public employee = new Employee();
  form: NgForm;
 // e1 = new Employee();
@@ -61,8 +78,8 @@ console.log('sad');
     // tslint:disable-next-line:align
     this.apiService.getEmployees().subscribe(
       data => {
-        this.employees = data; // Typecasting the retrieved data into employee list. (data is form of json list)
-        console.log(this.employees);
+        this.em = data; // Typecasting the retrieved data into employee list. (data is form of json list)
+        console.log(this.em);
        // console.log(this.employees.name);
     });
 
@@ -75,8 +92,32 @@ console.log('sad');
 
     }
 
+    getName(): void{
+      console.log(this.employee.name);
+    }
+
+    postEmp(): void {
+      this.apiService.postEmployee(this.emp2).subscribe(
+        data => {
+          this.savedemp2 = data;
+          console.log('saved emp2');
+        },
+        error => {
+          console.log('emp2 error');
+        }
+      );
+    }
+
+    postEmp2(): void {
+      this.apiService.postEmployee(this.employee).subscribe(
+        data => {
+          this.savedemp2 = data;
+          console.log(this.savedemp2);
+        }
+      );
+    }
     // tslint:disable-next-line:typedef
-    userRegistration(form: NgForm){
+/*    userRegistration(form: NgForm){
       console.log('Registration method ');
      // console.log('e1' + this.e1.name);
     //  console.log('e2' + this.e2.name);
@@ -96,7 +137,7 @@ console.log('sad');
                  }
       );
     }
-
+*/
 
 // tslint:disable-next-line:typedef
 /* userRegistration(form: NgForm){

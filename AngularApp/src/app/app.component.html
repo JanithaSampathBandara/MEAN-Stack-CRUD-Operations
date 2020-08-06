@@ -1,75 +1,72 @@
-<div class="container-fluid" >
+<div class="container-fluid" style="border: 3px solid rgb(5, 185, 44);" >
 <h1 style="text-align: center; color: darkred;">Registration Form</h1>
-</div>
+</div> <br>
 
 
-<div class="container-fluid" style="border: 3px solid green;">
-  <div class="row">
-   <div class="col-md-3" style="border: 2px solid blue;">
-    <form #form="ngForm" (ngSubmit) = "userRegistration(form)" novalidate>
-      <p>{{ form.value | json }}</p>
+  <div class="container col-md-5" style="border: 2px solid blue; align-content: center;">
+      <form #form="ngForm" (ngSubmit)="postEmp2()" novalidate>
+        <p>{{ form.value | json }}</p>
 
-      <div class="form-group">
-        <label for="name">Name : {{ name }}</label> 
-        <input class="form-control" type="text" name="name" placeholder="Enter your name here"  (ngModel) = "name" required><br>
-      </div>
-      <div class="form-group">
-        <label for="address">Address : </label>
-        <input class="form-control" type="text" name="address" placeholder="Enter your address here"  (ngModel) = "address" required><br>
-      </div>
-      <div class="form-group">
-        <label for="salary">Salary : </label>
-        <input class="form-control" type="text" name="salary" placeholder="Enter your salary here"  (ngModel) = "salary" required><br>
-      </div>
-      <div class="form-group">
-        <label for="nic">NIC Number : </label>
-        <input class="form-control" type="text" name="nic" placeholder="Enter your NIC number here"  (ngModel) = "nic" required><br>
-      </div>
-      <div class="form-group">
-        <label for="email">E mail : </label>
-        <input class="form-control" type="text" name="email" placeholder="Enter your email here" (ngModel) = "email" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small><br>
-      </div>
-      <div class="form-group">
-        <label for="password">Password : </label>
-        <input class="form-control" type="password" name="password" placeholder="Enter your password here"  (ngModel) = "password" required><br>
-        <input class="btn btn-danger" type="submit" value="Submit" style="width: 200px; height: initial; display: block; margin: 10px auto;">    
-      </div>
+        <div class="form-group">
+          <label for="name">Name : {{ employee.name }}</label> 
+          <input class="form-control" type="text" name="name" placeholder="Enter your name here"  [(ngModel)] = "employee.name" required><br>
+        </div>
+        <div class="form-group">
+          <label for="address">Address : {{ employee.address }}</label>
+          <input class="form-control" type="text" name="address" placeholder="Enter your address here"  [(ngModel)] = "employee.address" required><br>
+        </div>
+        <div class="form-group">
+          <label for="salary">Salary : {{ employee.salary }}</label>
+          <input class="form-control" type="text" name="salary" placeholder="Enter your salary here"  [(ngModel)] = "employee.salary" required><br>
+        </div>
+        <div class="form-group">
+          <label for="nic">NIC Number : {{ employee.nic }}</label>
+          <input class="form-control" type="text" name="nic" placeholder="Enter your NIC number here"  [(ngModel)] = "employee.nic" required><br>
+        </div>
+        <div class="form-group">
+          <label for="email">E mail : {{ employee.email }}</label>
+          <input class="form-control" type="text" name="email" placeholder="Enter your email here" [(ngModel)] = "employee.email" required>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small><br>
+        </div>
+        <div class="form-group">
+          <label for="password">Password : {{ employee.password }}</label>
+          <input class="form-control" type="password" name="password" placeholder="Enter your password here"  [(ngModel)] = "employee.password" required><br>
+          <input class="btn btn-danger" type="submit" value="Submit" style="width: 200px; height: initial; display: block; margin: 10px auto;">    
+        </div>
       </form>
-   </div> 
-   <div class="col-md-9">
-     <h1 style="text-align: center;">Registered Users</h1>
-    <table class="table" style="border: 3px solid darkred;">
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Salary</th>
-        <th>NIC</th>
-        <th>E-mail</th>
-        <th>Password</th>
-        <th>Date</th>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let emps of employees">
-        <td>{{emps._id}}</td>
-        <td>{{emps.name}}</td>
-        <td>{{emps.address}}</td>
-        <td>{{emps.salary}}</td>
-        <td>{{emps.nic}}</td>
-        <td>{{emps.email}}</td>
-        <td>{{emps.password}}</td>
-        <td>{{emps.date}}</td>
-        <td><button class="btn btn-warning">Update</button></td>
-        <td><button class="btn btn-danger">Delete</button></td>
-      </tr>
-    </table>
-   </div>
-  </div>
-</div>
-<hr>
-<div></div>
+  </div> <br>
+
+   <div class="container-fluid" style="border: 3px solid green;">
+      <h1 style="text-align: center;">Registered Users</h1>
+        <table class="table">
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Salary</th>
+            <th>NIC</th>
+            <th>E-mail</th>
+            <th>Password</th>
+            <th>Date</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr *ngFor="let emps of em">
+            <td>{{emps._id}}</td>
+            <td>{{emps.name}}</td>
+            <td>{{emps.address}}</td>
+            <td>{{emps.salary}}</td>
+            <td>{{emps.nic}}</td>
+            <td>{{emps.email}}</td>
+            <td>{{emps.password}}</td>
+            <td>{{emps.date}}</td>
+            <td><button class="btn btn-warning">Update</button></td>
+            <td><button class="btn btn-danger">Delete</button></td>
+          </tr>
+        </table>
+    </div> <br>
+
+<div><button class="btn btn-danger" (click)="postEmp2()">Click</button></div>
 
 <!-- 
 <div class="container">

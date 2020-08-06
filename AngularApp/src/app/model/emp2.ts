@@ -1,4 +1,4 @@
-export class Emp
+export class Emp2
 {
     // tslint:disable-next-line:variable-name
   //  _id: any;

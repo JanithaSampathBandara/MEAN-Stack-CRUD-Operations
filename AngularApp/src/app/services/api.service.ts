@@ -5,6 +5,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Employee } from '../model/employee';
 import { Emp } from '../model/emp';
+import { Emp2 } from '../model/emp2';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class ApiService {
     // const a = this.employee._id;
   }
 
-  postEmployee(emp: Employee): Observable<any>{
+  postEmployee(emp: any): Observable<any>{
     console.log('janzz');
     console.log('In services : ' + emp);
     return this.httpClient.post('http://localhost:3000/employees/saveEmployee', emp);

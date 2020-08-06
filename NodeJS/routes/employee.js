@@ -25,10 +25,12 @@ router.post('/saveEmployee', async (req, res) => {
        const savedEmployee = await employee.save();
        res.header("Access-Control-Allow-Origin", "*");
        res.json(savedEmployee);
+       console.log('Saved to backend succesfully :' + savedEmployee);
     }
     catch(err)
     {
         console.log('Backend Error');
+        console.log(err);
         res.json({ message : err });
     }
 });
