@@ -62,6 +62,22 @@ router.get('/getEmployee/:employeeId', async (req, res) => {
     }
     
     
+});
+
+router.delete('/deleteEmployee/:employeeId', async (req, res) => {
+    try
+    {
+        const deletedEmployee = await Employee.deleteOne({ _id: req.params.employeeId });
+        res.header("Access-Control-Allow-Origin", "*");
+        res.json(deletedEmployee);
+        console.log('deleted');
+    }
+    catch(err)
+    {
+        res.json({ message : err });
+        console.log('not deleted');
+    }
+    
 })
 
 module.exports = router;
